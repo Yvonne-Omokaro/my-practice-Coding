@@ -56,3 +56,30 @@ window.addEventListener("scroll", () => {
     });
 
 });
+
+const allSections = document.querySelectorAll("sections");
+const navigationItem = document.querySelectorAll("navbar__list");
+window.addEventListener("scroll", () => {
+    let currentView = "";
+    var pageYOffset = "";
+    //loop through all the sections
+    entireSections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionLength = section.clientHeight;
+        // i will introduce the pageYOffset.
+        //PageYOffset, commonly known as scrollY, is a read-only window property that returns the amount of vertical scrolling
+        //(i.e., up or down) that has occurred so far.
+        //If the value is set to 0.0, it means that the top edge of the document is presently connected with the upper edge of the browser's subject area.
+        if(pageYOffset >= sectionTop - sectionLength/3){
+            currentView = entireSections.getAttribute("id");
+        };
+    });
+    navigationItem.forEach(li =>{
+        li.classList.remove("your-active-class");
+        if(li.classList.contains(currentView)){
+            li.classList.add("your-active-class");
+            section.style.cssText = "background-color: lemon";
+        };
+    });
+
+});
